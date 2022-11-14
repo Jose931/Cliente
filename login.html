@@ -32,7 +32,7 @@
                if(comprobarUser && comprobarPass){
                     document.write('Datos recogidos correctamente');
                }else{
-                document.write('Datos erroneos');
+                document.write('Datos erroneos: '+ "<br>");
                }
 
             }
@@ -45,7 +45,7 @@
                     console.log("Entra por el bueno.");
                     return true;
                 }
-                document.write("Nombre mal escrito. No debe tener ni maysculas ni caracteres especiales.")
+                document.write("Nombre mal escrito. No debe tener ni maysculas ni caracteres especiales." + "<br>");
                 return false;
             }
 
@@ -61,7 +61,7 @@
                     
                     return true;
                 }
-                document.write("La contraseña debe cpntener al menos letras mayusculas, minusculas, numeros y caracteres especiales.")
+                document.write("La contraseña debe cpntener al menos letras mayusculas, minusculas, numeros y caracteres especiales."+ "<br>");
                 return false;
             }
 
