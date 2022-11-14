@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body> 
+    <div>
+        <form >
+            
+            <input class="" type="text" id="usuario" name="usuario" placeholder="usuario"><br>
+             
+            <input class="" type="password" id="contraseña" name="contraseña" placeholder="contraseña"><br>
+            <input class="" type="button" value="Enviar" onclick="validar()">
+        </form>
+    </div>    
+        <script>
+            //FUNCION DE VALIDACION GENERAL DEL LOGIN
+            function validar(){
+               var usuario = document.getElementById('usuario').value;
+               var contraseña = document.getElementById('contraseña').value;
+            ; 
+               var comprobar = true;
+               console.log(usuario);
+
+
+               comprobarUser =validarUser(usuario);//lLAMA A VALIDAR EL USUARIO Y RETORNA UN BOOLEANO
+               comprobarPass = validarPass(contraseña);//lLAMA A VALIDAR LA CONTRASEÑA Y RETORNA UN BOOLEANO
+
+               if(comprobarUser && comprobarPass){
+                    document.write('Datos recogidos correctamente');
+               }else{
+                document.write('Datos erroneos');
+               }
+
+            }
+            //VALIDACION DEL USUARIO IRA VALIDANDO SI TIENE MAYUSCULA, MINUSCULA Y NUMERO Y SI TODO ES CORRECTO DEVOLVERA TRUE
+            function validarUser(usuario){
+                var ComprobacionMinus = validarMinusculas(usuario);
+                var ComprobacionNumeros = validarNumeros(usuario);
+
+                if(ComprobacionMinus== 1 && ComprobacionNumeros== 1){
+                    console.log("Entra por el bueno.");
+                    return true;
+                }
+                document.write("Nombre mal escrito. No debe tener ni maysculas ni caracteres especiales.")
+                return false;
+            }
+
+
+            //VALIDACION DEL USUARIO IRA VALIDANDO SI TIENE MAYUSCULA, MINUSCULA, NUMERO Y CARACTER Y SI TODO ES CORRECTO DEVOLVERA TRUE
+            function validarPass(contraseña){
+                var comprobacionM = validarMayusculas(contraseña);
+                var ComprobacionMinus = validarMinusculas(contraseña);
+                var ComprobacionNumeros = validarNumeros(contraseña);
+                var comprobarCaracteres = validarCaracteres(contraseña);
+
+                if(comprobacionM== 1 && ComprobacionMinus== 1 && ComprobacionNumeros== 1 && comprobarCaracteres== 1){
+                    
+                    return true;
+                }
+                document.write("La contraseña debe cpntener al menos letras mayusculas, minusculas, numeros y caracteres especiales.")
+                return false;
+            }
+
+             //LAS SIGUIENTES FUNCIONES SON LASDISTINTAS VALIDACIONES   
+
+            function validarMayusculas(cadena){
+
+                let mayusculas = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+                for(i=0; i<cadena.length; i++){
+                    if (mayusculas.indexOf(cadena.charAt(i),0)!=-1){
+                        return 1;
+                    }
+                }
+                return 0;    
+            }
+
+            function validarMinusculas(cadena){
+                let minusculas = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'ñ', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+                for(i=0; i<cadena.length; i++){
+                    if (minusculas.indexOf(cadena.charAt(i),0)!=-1){
+                        return 1;
+                    }
+                }
+                return 0;
+            }
+                
+            
+
+            function validarNumeros(cadena){
+                let numero = ['0', '1', '2', '3', '4', '5', '6','7', '8', '9'];
+                for(i=0; i<cadena.length; i++){
+                    if (numero.indexOf(cadena.charAt(i),0)!=-1){
+                        return 1;
+                    }
+                }
+                return 0;
+            }
+
+            
+
+            function validarCaracteres(cadena){
+
+                let str = ['>',',','<','-',';',':','_','´','¨','Ç','*','^','?','¿','¡','!','ª','º','!','"','·','$','%','&','/','(',')','=','+','[',']','{','}',']','@','€'];
+                for(i=0; i<cadena.length; i++){
+                    if (str.indexOf(cadena.charAt(i),0)!=-1){
+                        return 1;
+                    }
+                }
+                return 0;
+            }       
+
+        </script>
+</body>
+</html>
