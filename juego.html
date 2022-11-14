@@ -8,15 +8,41 @@
 </head>
 <body>
     <div>
-        <h2>Este es tu numero generado aleatoriamente</h2>
+        <h2>¿Quieres te demos ya tu combinacion de numeros o quieres elegir tu una combinacion?</h2>
     </div>
     <div>
-        <input type="button" id="jugar" name="jugar" value="JUGAR YA!">
+        <a href="juegoCombinacion.html">COMBINACION CREADA</a>
     </div>
     <div>
-        <a href="juego2.html">¿QUIERES ELEGIR TU PROPIA COMBIACION?</a>
+        <a href="juegoCombinaciones.html">ELEGIR COMBINACION</a>
     </div>
+    <script>
+        function generarNumero(){
+            let combinacion = [];
+            
+            for(let i = 0 ; i < 6; i++){
+                let num = Math.ceil(Math.random()*49);
+                if(comprobarNumero(num , combinacion)){
+                    if(combinacion.length == 0){
+                        combinacion[0] = num;
+                    }else{
+                        combinacion[combinacion.length -1] = num;
+                    }
+                }else{
+                    i--;
+                }
+            }
+        }
 
-    
+        function comprobarNumero(num, array){
+            for (let i = 0; i < array.length; i++) {
+                if(num == array[i]){
+                    return false;
+                }
+            }
+            return true;
+        }
+    </script>
+
 </body>
 </html>
