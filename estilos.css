@@ -1,0 +1,35 @@
+body{
+   background-color: aquamarine;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+
+
+
+div.juego{
+   background-color: plum;
+   width: 500px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+}
+
+div.numero{
+   background-color: coral;
+   width: 300px;
+   margin: 5px;
+   display: flex;
+   justify-content: space-between;
+}
+
+div.numero1{
+   width: 150px;
+   background-color: yellow;
+   display: flex;
+   justify-content: space-evenly;
+   align-items: center;
+   padding: 5px;
+}

@@ -1,39 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
     <title>Document</title>
-</head>
-<body>
-    <div>
-        <h2>¿Quieres te demos ya tu combinacion de numeros o quieres elegir tu una combinacion?</h2>
-    </div>
-    <div>
-        <a href="juegoCombinacion.html">COMBINACION CREADA</a>
-    </div>
-    <div>
-        <a href="juegoCombinaciones.html">ELEGIR COMBINACION</a>
-    </div>
     <script>
-        function generarNumero(){
+
+        let numeroGenerado = generarNumero();
+        let numeroGanador = generarNumero();
+        let arrayDeNumeros = [];
+        
+        function generarNumero() {
             let combinacion = [];
-            
-            for(let i = 0 ; i < 6; i++){
-                let num = Math.ceil(Math.random()*49);
-                if(comprobarNumero(num , combinacion)){
-                    if(combinacion.length == 0){
+
+            for (let i = 0; i < 6; i++) {
+                let num = Math.ceil(Math.random() * 49);
+                if (comprobarNumero(num, combinacion)) {
+                    if (combinacion.length == 0) {
                         combinacion[0] = num;
-                    }else{
-                        combinacion[combinacion.length -1] = num;
+                    } else {
+                        combinacion[combinacion.length] = num;
                     }
-                }else{
+                } else {
                     i--;
                 }
             }
+            return combinacion;
         }
 
+        
         function comprobarNumero(num, array){
             for (let i = 0; i < array.length; i++) {
                 if(num == array[i]){
@@ -42,7 +40,79 @@
             }
             return true;
         }
+
+        function arrayCombinaciones(){
+            for (i = 0; i < 50; i++) {
+                let numeroGenerado = generarNumero();
+                document.write("<div class='numero'>"); 
+                    document.write("<div class='numero1' id=fila"+ (i + 1) + ">");  
+                        for (j = 0; j < numeroGenerado.length; j++) {
+                            document.write(
+                                "<span>"
+                                    + numeroGenerado[j] + " " + 
+                                "</span>"
+                            );
+                        }
+                    document.write("</div>"); 
+                document.write("<button id='" + (i + 1)  +"' onclick = comprobarNumero(fila"+ (i + 1) + ")>Prueba esta!</button>");    
+                document.write("</div>");
+            
+            }
+            
+       }
+
+       function mostrarNumeroGenerado(){
+            document.write("<div class='numero'>");
+            document.write("<div class='numero1'>");   
+                for (i = 0; i < numeroGenerado.length; i++) {
+                    document.write(
+                        "<span>"
+                            + numeroGenerado[i] + " " + 
+                        "</span>"
+                    );
+                } 
+            document.write("</div>");
+            document.write("<button>Prueba por defecto</button>");
+            document.write("</div>");
+       }
+
+       function comprobar(id) {
+        
+        let seleccionado = [];
+        for (var i = 0; i < 6; i++) {
+            seleccionado.push(document.getElementById(id).getElementsByTagName('span').item(i).value);
+        }
+        console.log(seleccionado);
+    }
+
+        
+       
+
     </script>
+</head>
+
+<body>
+    <div class="juego">
+        <div class="container1">
+            <p>Numero Generado</p>
+            <script>
+                mostrarNumeroGenerado();
+            </script>
+
+        </div>
+        <div class="container2">
+            <div>
+                <p>Pruebe entre estas combinaciones</p>
+            </div>
+            <div>
+                <script>
+                    arrayCombinaciones();
+                </script>
+            </div>
+        </div>
+    </div>
+
 
 </body>
+
 </html>
