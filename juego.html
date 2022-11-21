@@ -11,7 +11,7 @@
 
         let numeroGenerado = generarNumero();
         let numeroGanador = generarNumero();
-        
+
         function generarNumero() {
             let combinacion = [];
 
@@ -30,69 +30,118 @@
             return combinacion;
         }
 
-        
-        function comprobarNumero(num, array){
+
+        function comprobarNumero(num, array) {
             for (let i = 0; i < array.length; i++) {
-                if(num == array[i]){
+                if (num == array[i]) {
                     return false;
                 }
             }
             return true;
         }
 
-        function arrayCombinaciones(){
+        function arrayCombinaciones() {
             for (i = 0; i < 50; i++) {
                 let numeroGenerado = generarNumero();
-                document.write("<div class='numero'>"); 
-                    document.write("<div class='numero1' id=fila"+ (i + 1) + ">");  
-                        for (j = 0; j < numeroGenerado.length; j++) {
-                            document.write(
-                                "<span value=" + numeroGenerado[j] + ">"
-                                    + numeroGenerado[j] + 
-                                "</span>"
-                            );
-                        }
-                    document.write("</div>"); 
-                document.write("<button id='" + (i + 1)  +"' onclick = comprobar('fila"+ (i + 1) + "')>Prueba esta!</button>");    
-                document.write("</div>");
-            
-            }
-            
-       }
-
-       function mostrarNumeroGenerado(){
-            document.write("<div class='numero'>");
-            document.write("<div class='numero1'>");   
-                for (i = 0; i < numeroGenerado.length; i++) {
+                document.write("<div class='numero'>");
+                document.write("<div class='numero1' id=fila" + (i + 1) + ">");
+                for (j = 0; j < numeroGenerado.length; j++) {
                     document.write(
-                        "<span>"
-                            + numeroGenerado[i] + 
+                        "<span value=" + numeroGenerado[j] + ">"
+                        + numeroGenerado[j] +
                         "</span>"
                     );
-                } 
-            document.write("</div>");
-            document.write("<button>Prueba por defecto</button>");
-            document.write("</div>");
-       }
+                }
+                document.write("</div>");
+                document.write("<button id='" + (i + 1) + "' onclick = comprobar('fila" + (i + 1) + "')>Prueba esta!</button>");
+                document.write("</div>");
 
-       function comprobar(id) {
-        
+            }
+
+        }
+
+        function combinacionUsuario() {
+
+
+            document.write("<div>");
+            document.write("<div class='numero2' id='numeroUser'>");
+            for (j = 0; j < numeroGenerado.length; j++) {
+                document.write(
+                    "<input type='text'>"
+                );
+            }
+            document.write("<button id='num' onclick = comprobarNumUser('numeroUser')>Prueba esta!</button>");
+            document.write("</div>");
+            document.write("</div>");
+
+
+
+        }
+
+        function mostrarNumeroGenerado() {
+            document.write("<div class='numero'>");
+            document.write("<div class='numero1' id='fila0'>");
+            for (i = 0; i < numeroGenerado.length; i++) {
+                document.write(
+                    "<span>"
+                    + numeroGenerado[i] +
+                    "</span>"
+                );
+            }
+            document.write("</div>");
+            document.write("<button onclick = comprobar('fila0')>Prueba por defecto</button>");
+            document.write("</div>");
+        }
+
+        function comprobar(id) {
+
             let seleccionado = [];
             for (var i = 0; i < 6; i++) {
                 seleccionado.push(document.getElementById(id).getElementsByTagName('span')[i].innerHTML);
             }
-          document.getElementById("msgWinNumber").innerHTML ="El numero ganador es: " +  numeroGanador;  
-        if(JSON.stringify(seleccionado) == JSON.stringify(numeroGanador)){
-            document.getElementById("msgSelectedNumber").innerHTML ="Tu numero es: " +  seleccionado;
-            document.getElementById("msgGanado").innerHTML ="Has ganado!";
-        }else{
-            document.getElementById("msgSelectedNumber").innerHTML ="Tu numero es: " +  seleccionado;
-            document.getElementById("msgGanado").innerHTML ="Has perdido!";
-        }
-    }
+            document.getElementById("msgWinNumber").innerHTML = "El numero ganador es: " + numeroGanador;
+            if (JSON.stringify(seleccionado) == JSON.stringify(numeroGanador)) {
+                document.getElementById("msgSelectedNumber").innerHTML = "Tu numero es: " + seleccionado;
+                document.getElementById("msgGanado").innerHTML = "Has ganado!";
+            } else {
+                document.getElementById("msgSelectedNumber").innerHTML = "Tu numero es: " + seleccionado;
+                document.getElementById("msgGanado").innerHTML = "Has perdido!";
+            }
 
-        
-       
+        }
+        function comprobarNumUser(id) {
+
+            let seleccionado = [];
+            for (var i = 0; i < 6; i++) {
+                seleccionado.push(document.getElementById(id).getElementsByTagName('input').item(i).value);
+            }
+            valido = comprobarRepetidos(seleccionado);
+            if(valido){
+                document.getElementById("msgWinNumber").innerHTML = "El numero ganador es: " + numeroGanador;
+            if (JSON.stringify(seleccionado) == JSON.stringify(numeroGanador)) {
+                document.getElementById("msgSelectedNumber").innerHTML = "Tu numero es: " + seleccionado;
+                document.getElementById("msgGanado").innerHTML = "Has ganado!";
+            } else {
+                document.getElementById("msgSelectedNumber").innerHTML = "Tu numero es: " + seleccionado;
+                document.getElementById("msgGanado").innerHTML = "Has perdido!";
+            }
+            }else{
+                document.getElementById("msgWinNumber").innerHTML = "Todos los numeros de la combinacion deben de ser distintos.";
+            }
+            
+        }
+
+        function comprobarRepetidos(array){
+            for(i = 0; i < array.length ; i++){
+                for(j = 0; j < array.length; j++){
+                    if((array[i] == array[j] && i != j) || (array[i]>=1 && array[i] >= 49 )){
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
 
     </script>
 </head>
@@ -103,6 +152,13 @@
             <h1 id="msgGanado"></h1>
             <h1 id="msgWinNumber"></h1>
             <h1 id="msgSelectedNumber"></h1>
+        </div>
+        <div class="container0">
+            <p>Pon tu numero</p>
+            <script>
+                combinacionUsuario();
+            </script>
+
         </div>
         <div class="container1">
             <p>Numero Generado</p>

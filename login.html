@@ -4,9 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="log.css">
     <title>Document</title>
 </head>
-<body> 
+<body>
+    <div>
+        <h1>Login Loteria</h1>
+        <h2 id="msnError"></h2>
+        <h2 id="msnError2"></h2>
+    </div> 
     <div>
         <form >
             <input class="" type="text" id="usuario" name="usuario" placeholder="usuario"><br>
@@ -19,18 +25,25 @@
             function validar(){
                var usuario = document.getElementById('usuario').value;
                var contraseña = document.getElementById('contraseña').value;
-            ; 
+               var error1;
+               var error2;
+             
                var comprobar = true;
                console.log(usuario);
 
 
-               comprobarUser =validarUser(usuario);//lLAMA A VALIDAR EL USUARIO Y RETORNA UN BOOLEANO
-               comprobarPass = validarPass(contraseña);//lLAMA A VALIDAR LA CONTRASEÑA Y RETORNA UN BOOLEANO
+               var comprobarUser =validarUser(usuario);//lLAMA A VALIDAR EL USUARIO Y RETORNA UN BOOLEANO
+               var comprobarPass = validarPass(contraseña);//lLAMA A VALIDAR LA CONTRASEÑA Y RETORNA UN BOOLEANO
 
                if(comprobarUser && comprobarPass){
-                    document.write('Datos recogidos correctamente');
+                    window.location = "juego.html";
                }else{
-                document.write('Datos erroneos: '+ "<br>");
+                if(!comprobarUser){
+                    document.getElementById('msnError').innerHTML = "Nombre mal escrito. No debe caracteres especiales.";
+                }else{
+                    document.getElementById('msnError2').innerHTML = "La contraseña debe contener al menos letras mayusculas, minusculas, numeros y caracteres especiales."; 
+                }
+                   
                }
 
             }
@@ -43,7 +56,6 @@
                     console.log("Entra por el bueno.");
                     return true;
                 }
-                document.write("Nombre mal escrito. No debe tener ni maysculas ni caracteres especiales." + "<br>");
                 return false;
             }
 
@@ -59,7 +71,7 @@
                     
                     return true;
                 }
-                document.write("La contraseña debe cpntener al menos letras mayusculas, minusculas, numeros y caracteres especiales."+ "<br>");
+                error2 = "La contraseña debe contener al menos letras mayusculas, minusculas, numeros y caracteres especiales.";
                 return false;
             }
 
