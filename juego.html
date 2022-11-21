@@ -47,13 +47,13 @@
                     document.write("<div class='numero1' id=fila"+ (i + 1) + ">");  
                         for (j = 0; j < numeroGenerado.length; j++) {
                             document.write(
-                                "<span>"
-                                    + numeroGenerado[j] + " " + 
+                                "<span value=" + numeroGenerado[j] + ">"
+                                    + numeroGenerado[j] + 
                                 "</span>"
                             );
                         }
                     document.write("</div>"); 
-                document.write("<button id='" + (i + 1)  +"' onclick = comprobarNumero(fila"+ (i + 1) + ")>Prueba esta!</button>");    
+                document.write("<button id='" + (i + 1)  +"' onclick = comprobar('fila"+ (i + 1) + "')>Prueba esta!</button>");    
                 document.write("</div>");
             
             }
@@ -66,7 +66,7 @@
                 for (i = 0; i < numeroGenerado.length; i++) {
                     document.write(
                         "<span>"
-                            + numeroGenerado[i] + " " + 
+                            + numeroGenerado[i] + 
                         "</span>"
                     );
                 } 
@@ -77,11 +77,18 @@
 
        function comprobar(id) {
         
-        let seleccionado = [];
-        for (var i = 0; i < 6; i++) {
-            seleccionado.push(document.getElementById(id).getElementsByTagName('span').item(i).value);
+            let seleccionado = [];
+            for (var i = 0; i < 6; i++) {
+                seleccionado.push(document.getElementById(id).getElementsByTagName('span')[i].innerHTML);
+            }
+          document.getElementById("msgWinNumber").innerHTML ="El numero ganador es: " +  numeroGanador;  
+        if(JSON.stringify(seleccionado) == JSON.stringify(numeroGanador)){
+            document.getElementById("msgSelectedNumber").innerHTML ="Tu numero es: " +  seleccionado;
+            document.getElementById("msgGanado").innerHTML ="Has ganado!";
+        }else{
+            document.getElementById("msgSelectedNumber").innerHTML ="Tu numero es: " +  seleccionado;
+            document.getElementById("msgGanado").innerHTML ="Has perdido!";
         }
-        console.log(seleccionado);
     }
 
         
@@ -92,6 +99,11 @@
 
 <body>
     <div class="juego">
+        <div class="mensajes">
+            <h1 id="msgGanado"></h1>
+            <h1 id="msgWinNumber"></h1>
+            <h1 id="msgSelectedNumber"></h1>
+        </div>
         <div class="container1">
             <p>Numero Generado</p>
             <script>
