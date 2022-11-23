@@ -6,24 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Numeros Primos</title>
     <script>
-        function PrimeNumber(num){
-            if(num == 0 || num == 2 || num == 4)return fasle;
+        function primeNumber(num){
+            if(num == 0 || num == 1 || num == 4)return false;
             for(let i = 2; i < num / 2; i++){
                 if(num % i == 0)return false;
             }
             return true;
         }
 
-        function PrintPrime(){
+        function printPrime(){
+            document.write("<p>Los numeros primos son: </p>");
             for(let i = 0; i < 10000; i++){
-                if(PrimeNumber(i)){document.write(i)};
+                if(primeNumber(i)){document.write("<p>" + i + " </p>");}
             }
         }
     </script>
 </head>
 <body>
     <script>
-        PrintPrime();
+        printPrime();
     </script>
 </body>
 </html>

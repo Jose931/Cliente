@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        function takeNames(n) {
+            let names = [];
+            if (n >= 1) {
+                document.write("<p>Dame " + i + " nombres</p>");
+                document.write("<input type = 'text' id = 'name'>");
+                document.write("<input type='button' id='sendNames' value='Enviar' onclick='takeNames(n)'>");
+                names[i] = document.getElementById('name').value;
+            }
+
+            return names;
+        }
+
+        function orderReverseNames() {
+            let disorderNames = ['Pablo', 'Ana', 'Juan', 'Pedro', 'Santiago'];
+            disorderNames.sort((a, b) => {
+                a = a.toLowerCase();
+                b = b.toLowerCase();
+                if (a == b) { return 0; }
+                if (a < b) { return 1; }
+                if (a > b) { return -1; }
+            });
+            return disorderNames;
+        }
+        function seeResult() {
+            let orderNames = orderReverseNames();
+            orderNames.forEach(element => {
+                document.write(element + " ");
+            });
+        }
+
+    </script>
+</head>
+
+<body>
+    <script>
+        seeResult();
+    </script>
+
+</body>
+
+</html>

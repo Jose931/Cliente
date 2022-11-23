@@ -7,7 +7,7 @@
     <title>Par o Impar</title>
     <script>
         
-        function CheckNumber(){
+        function checkNumber(){
             document.getElementById('insertNumber').value % 2 == 0 ? alert("Es par") : alert("Es impar");
         }
        
@@ -16,7 +16,7 @@
 <body>
     <form method="POST">
         <input type="number" id="insertNumber" name="insertNumber" placeholder="Ingrese valor">
-        <input type="submit" onclick="CheckNumber()">
+        <input type="submit" onclick="checkNumber()">
     </form>
 </body>
 </html>
