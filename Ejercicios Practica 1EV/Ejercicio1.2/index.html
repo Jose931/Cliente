@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aleaorios 10.000</title>
+    <script>
+        function CheckNumber(num) {
+            let texto;
+            num % 2 == 0 ? texto = "Es par" : texto = "Es impar";
+            return texto;
+        }
+
+        function PrintNumber() {
+            for (i = 0; i < 500; i++) {
+               let number = Math.ceil(Math.random() * 10000);
+                document.write("<p>Numero :" + number + " : " + CheckNumber(number) + "</p>");
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <script>
+        PrintNumber();
+    </script>
+</body>
+</html>
