@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function getValues(id) {
+            
+            let value = document.getElementById(id).value;
+            value == ''? value = undefined: '';
+            return value; 
+        }
+
+        function printTable(rows = 4, columns = 4) {
+            document.write("<table border=1 cellspacing=0 cellpadding=15>");
+            for(let i = 1; i <= rows; i++){
+                document.write("<tr>")
+                for(let j = 1; j <= columns; j++){
+                    document.write("<td>" + "Celda " + i + "-" + j + "</td>");
+                }
+                document.write("</tr>");
+            }
+            document.write("</table>");
+        }
+    </script>
+</head>
+
+<body>
+    <form action="">
+        <input type="text" id="rows" placeholder="Filas">
+        <input type="text" id="columns" placeholder="Columnas">
+        <input type="button" onclick="printTable(getValues('rows'), getValues('columns'))" value="Pintar tabla">
+    </form>
+</body>
+
+</html>
