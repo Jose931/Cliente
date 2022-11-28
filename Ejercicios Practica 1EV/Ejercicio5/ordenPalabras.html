@@ -10,11 +10,9 @@
 
         function takeNames(n) {
             let names = [];
+            formuLario = "<form action=''><label for='nombre'>Nombre</label><input type='text' id='nombre' placeholder='Escribe un nombre'><input type='submit' value='Enviar nombre'></form>";
             if (n >= 1) {
-                document.write("<p>Dame " + i + " nombres</p>");
-                document.write("<input type = 'text' id = 'name'>");
-                document.write("<input type='button' id='sendNames' value='Enviar' onclick='takeNames(n)'>");
-                names[i] = document.getElementById('name').value;
+                
             }
 
             return names;
@@ -45,7 +43,7 @@
     <script>
         seeResult();
     </script>
-
+<form action=""><label for="nombre">Nombre</label><input type="text" id="nombre" placeholder="Escribe un nombre"><input type="submit" value="Enviar nombre"></form>
 </body>
 
 </html>
