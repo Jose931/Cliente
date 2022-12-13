@@ -5,15 +5,13 @@ function Punto(x,y){
     this.cambiar=(x,y)=>{
         this.x=x;
         this.y=y;
-    }
+    };
 
     this.copia=()=>(new Punto (this.x, this.y));
 
     this.suma = (p2)=>(new Punto(this.x+p2.x, this.y+p2.y));
 
-    this.toString = function(){
-        return "[" + this.x + " ," + this.y + "]";
-    };
+    this.toString =()=>`(${this.x},${this.y})`;
 
     this.obtenerDistancia=function(p2){
         return Math.sqrt(
@@ -30,8 +28,8 @@ p.cambiar(-5,2);
 var r = p.copia();
 r.x=9;
 
-console.log("p: " + s.toString());
-console.log("q: " + s.toString());
+console.log("p: " + p.toString());
+console.log("q: " + r.toString());
 
 var s=p.suma(r);
 console.log("s: " + s.toString());
