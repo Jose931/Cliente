@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let obj = {
+            x: 19,
+            y: 36,
+        mostrarCoordenadas : function () {
+                return '(${this.x},${this.y})';
+            }
+        }
+        console.log(obj.mostrarCoordenadas());
+
+        let libro = {
+            titulo : "Manual de UFOlogia",
+            "n-serie" : "187C2",
+            autores:["Pedro Martinez", "Ana Leon"],
+            editorial: {
+                nombre: "Inexistente S.A.",
+                pais : "España"
+            }
+        };
+        console.log(libro.titulo);
+        console.log(libro["n-serie"]);
+        console.log(libro.editorial.nombre);
+    </script>
+</body>
+
+</html>
