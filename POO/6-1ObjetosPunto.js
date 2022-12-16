@@ -34,4 +34,6 @@ console.log("q: " + r.toString());
 var s=p.suma(r);
 console.log("s: " + s.toString());
 
+
+
 console.log("Distancia entre p y q: " + p.obtenerDistancia(q));
