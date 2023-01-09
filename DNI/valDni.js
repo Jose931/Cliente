@@ -1,8 +1,7 @@
-
+//Primero veremos a que funcion de validacion corresponde la cadena de entrada
 function verTipo(str) {
     let string = str.toLowerCase();
     let primerCaracter = string[0];
-
 
     switch (primerCaracter) {
         case '0':
@@ -48,7 +47,7 @@ function verTipo(str) {
     }
 
 }
-
+//Valida el DNI viendo si son los caracteres correctos y si la letra de control es correcta
 function validarDni(dni) {
     var DNI = dni.toLowerCase();
     let regexDNI = /^\d{8}[A-Z]$/;
@@ -69,6 +68,7 @@ function validarDni(dni) {
 
 }
 
+//Valida el CIF si es correcto y si la letra de control tambien lo es
 function validarCif(cif) {
     var CIF = cif.toLowerCase();
     let regexCIF = /^[ABCDEFGHJKLMNPQRSUVW]\d{7}[0-9A-J]$/;
@@ -95,7 +95,7 @@ function validarCif(cif) {
     }
 
 }
-
+//Valida el Nie si es correcto y si la letra de control tambien lo es
 function validarNie(nie) {
     var NIE = nie.toLowerCase();
     let regexNIE = /^[X-Z]\d{7}[A-Z]$/;
@@ -112,7 +112,7 @@ function validarNie(nie) {
         document.getElementById("mensajeValidacion").innerHTML = "El numero introducido " + dni + " no corresponde a un DNI/CIF/NIE";
     }
 }
-
+//Devuelve la letra de control necesaria para el DNI y el NIE
 function letraControl(numero) {
     switch (numero) {
         case 0:
@@ -166,7 +166,7 @@ function letraControl(numero) {
 
     }
 }
-
+//Devuelve el numero correspondiente a la primera letra del NIE para calcular la letra de control
 function primeraLetraNie(letra) {
     switch (letra) {
         case 'x':
@@ -179,7 +179,7 @@ function primeraLetraNie(letra) {
             return;
     }
 }
-
+//Devuelve el numero de control a partir de los 7 numeros del CIF quitando la letra y el ultimo numero de control. Lo hace a partir de el calculoPares y calculoImpares
 function numeroControlCif(numero) {
 
     var pares = calculoPares(numero);
@@ -191,7 +191,7 @@ function numeroControlCif(numero) {
     return resultado;
 
 }
-
+//Devuelve el calculo la suma de los numero en la posicion par para calcular el numero de control del CIF 
 function calculoPares(numero) {
     numAux = 0;
     result = 0;
@@ -201,7 +201,7 @@ function calculoPares(numero) {
     }
     return result;
 }
-
+//Devuelve la suma de los digitos resultantes de la multiplicacion de ls numeros en la posicion impar para calcular el numero de control del CIF
 function calculoImpares(numero) {
     result = 0;
     for (var i = 0; i < numero.length; i += 2) {
@@ -215,7 +215,7 @@ function calculoImpares(numero) {
 
     return result;
 }
-
+//Devuelve la letra resultante del numero de control del CIF si este empieza en la letra requerida
 function letrasCif(numero) {
     switch (numero) {
         case 1:
