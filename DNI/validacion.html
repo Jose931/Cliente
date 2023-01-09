@@ -8,14 +8,14 @@
     <title>Document</title>
 </head>
 <body>
-    <h2 id="mensajeValidacion"></h2>
     <form action="">
         <label for="dni">Mete el DNI, CIF o NIE</label>
         <br>
-        <input type="text" name="dni" id="dni">
+        <input type="text" name="entrada" id="entrada">
         <br>
         <br>
-        <input type="button" value="Comprobar" onclick="validarDni(document.getElementById('dni').value)">
+        <input type="button" value="Comprobar" onclick="verTipo(document.getElementById('entrada').value)">
     </form>
+    <h2 id="mensajeValidacion"></h2>
 </body>
 </html>
